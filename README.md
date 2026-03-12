@@ -2,7 +2,7 @@
 
 Welcome to the source code of my personal portfolio website.
 
-**Live site:** https://masrursababkhanchowdhury.github.io/
+**Live site:** https://masrursababkhanchowdhury.info.bd/
 
 This repository contains the files that power my portfolio — a place where I showcase who I am, what I build, and the projects I’m proud of.
 
