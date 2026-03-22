@@ -56,6 +56,8 @@
   }
 
   function setupRevealAnimations() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     var targets = document.querySelectorAll('#root section, #root .terminal-card, #root details, #root .space-y-8 > div');
     if (!targets.length) return;
 
@@ -73,8 +75,44 @@
     }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
 
     targets.forEach(function (element, index) {
-      element.style.transitionDelay = Math.min(index * 40, 280) + 'ms';
+      element.style.transitionDelay = (index % 8) * 36 + 'ms';
       observer.observe(element);
+    });
+  }
+
+  function setupCardParallax() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 1024px)').matches) return;
+
+    var cards = document.querySelectorAll('#root .terminal-card');
+    if (!cards.length) return;
+
+    cards.forEach(function (card) {
+      var rafId = null;
+
+      function reset() {
+        card.style.transform = '';
+      }
+
+      card.addEventListener('pointermove', function (event) {
+        if (rafId) cancelAnimationFrame(rafId);
+
+        rafId = requestAnimationFrame(function () {
+          var rect = card.getBoundingClientRect();
+          var x = (event.clientX - rect.left) / rect.width;
+          var y = (event.clientY - rect.top) / rect.height;
+          var rotateY = (x - 0.5) * 4.2;
+          var rotateX = (0.5 - y) * 4.2;
+          card.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-6px) scale(1.01)';
+        });
+      }, { passive: true });
+
+      card.addEventListener('pointerleave', function () {
+        if (rafId) cancelAnimationFrame(rafId);
+        reset();
+      }, { passive: true });
+
+      card.addEventListener('blur', reset, { passive: true });
     });
   }
 
@@ -84,5 +122,6 @@
   window.addEventListener('load', function () {
     setupThemeToggle();
     setupRevealAnimations();
+    setupCardParallax();
   });
 })();
