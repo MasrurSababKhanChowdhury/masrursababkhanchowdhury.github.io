@@ -72,10 +72,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -2% 0px' });
 
     targets.forEach(function (element, index) {
-      element.style.transitionDelay = (index % 8) * 36 + 'ms';
+      element.style.transitionDelay = (index % 8) * 52 + 'ms';
       observer.observe(element);
     });
   }
@@ -101,9 +101,9 @@
           var rect = card.getBoundingClientRect();
           var x = (event.clientX - rect.left) / rect.width;
           var y = (event.clientY - rect.top) / rect.height;
-          var rotateY = (x - 0.5) * 4.2;
-          var rotateX = (0.5 - y) * 4.2;
-          card.style.transform = 'perspective(1000px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-6px) scale(1.01)';
+          var rotateY = (x - 0.5) * 7.2;
+          var rotateX = (0.5 - y) * 7.2;
+          card.style.transform = 'perspective(1200px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-10px) scale(1.02)';
         });
       }, { passive: true });
 
