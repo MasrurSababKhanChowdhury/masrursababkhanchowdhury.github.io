@@ -1,39 +1,67 @@
-# Masrur Sabab Khan Chowdhury — Personal Portfolio
+# Masrur Sabab Khan Chowdhury — Portfolio
 
-Welcome to the source code of my personal portfolio website.
+Personal portfolio website hosted on GitHub Pages.
 
 **Live site:** https://masrursababkhanchowdhury.info.bd/
 
-This repository contains the files that power my portfolio — a place where I showcase who I am, what I build, and the projects I’m proud of.
+## Overview
 
----
+This repository contains the production-ready static build of the portfolio.
+The app itself is bundled JavaScript/CSS under `assets/`, and `index.html` boots the application.
 
-## About the Portfolio
+## Tech Snapshot
 
-My portfolio site is built using standard web technologies (HTML, CSS, JavaScript) and hosted on **GitHub Pages**. It provides:
+- Static hosting: GitHub Pages
+- Frontend runtime: React (bundled output)
+- Entry point: `index.html`
+- Assets: `assets/index-ByZU6W7G.js`, `assets/index-C2MNsA8d.css`
 
-- A personal introduction and “About Me” section  
-- Highlights of my skills and technologies I use  
-- Showcases of selected projects and demos  
-- Links to my GitHub, social profiles, and contact options
+## Project Structure
 
-This is a space for me to share both my **professional work** and personal interests.
+```
+.
+├─ CNAME
+├─ index.html
+├─ 404.html
+├─ robots.txt
+├─ sitemap.xml
+├─ site.webmanifest
+├─ .nojekyll
+└─ assets/
+   ├─ index-ByZU6W7G.js
+   └─ index-C2MNsA8d.css
+```
 
----
+## Local Preview
 
-## Features
+Because this is a static output, use any lightweight local server:
 
-- Clean, responsive layout  
-- Projects showcase with links  
-- Dynamic sections for skills and experience  
-- Easy to update and extend
+### Python
 
----
+```bash
+python -m http.server 8080
+```
 
-## How to Preview Locally
+Then open: `http://localhost:8080`
 
-To view the site locally, you can simply open `index.html` in your browser, or:
+### VS Code Live Server
 
-1. Clone this repository:  
-   ```bash
-   git clone https://github.com/MasrurSababKhanChowdhury/masrursababkhanchowdhury.github.io.git
+Open the folder and run **Live Server** on `index.html`.
+
+## Deployment
+
+This repository is configured for GitHub Pages custom domain deployment:
+
+- `CNAME` points to `masrursababkhanchowdhury.info.bd`
+- `.nojekyll` ensures static assets are served without Jekyll processing
+- `404.html` supports SPA-style route fallback
+
+## Maintenance Notes
+
+- `index.html` holds SEO/social metadata and app bootstrap tags.
+- If you rebuild the frontend from source, replace files in `assets/` and update references in `index.html` if filenames change.
+- Keep `sitemap.xml` and `robots.txt` aligned with canonical domain.
+
+## License
+
+All rights reserved unless stated otherwise.
